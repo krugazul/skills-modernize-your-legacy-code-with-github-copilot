@@ -56,3 +56,25 @@ This project contains legacy COBOL code for managing student accounts. Below is 
 - Data integrity is maintained across all operations.
 
 For further details, refer to the source code in `/src/cobol/`.
+
+---
+
+## Sequence Diagram: Student Account Data Flow
+
+```mermaid
+sequenceDiagram
+	participant User
+	participant MainProgram
+	participant DataModule
+	participant OperationsModule
+
+	User->>MainProgram: Start application / login
+	MainProgram->>DataModule: Initialize/load student data
+	DataModule-->>MainProgram: Return student records
+	User->>MainProgram: Select operation (add/update/delete/report)
+	MainProgram->>OperationsModule: Request operation on account
+	OperationsModule->>DataModule: Read/write student account data
+	DataModule-->>OperationsModule: Confirm data operation
+	OperationsModule-->>MainProgram: Return operation result
+	MainProgram-->>User: Display result/report
+```
