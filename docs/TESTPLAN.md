@@ -1,0 +1,20 @@
+# COBOL Application Test Plan
+
+This test plan covers the business logic implemented in the legacy COBOL student account management system. Use this plan to validate the application with business stakeholders and as a basis for future unit and integration tests in Node.js.
+
+| Test Case ID | Test Case Description                | Pre-conditions                  | Test Steps                                                                 | Expected Result                                 | Actual Result | Status (Pass/Fail) | Comments |
+|--------------|--------------------------------------|----------------------------------|----------------------------------------------------------------------------|--------------------------------------------------|---------------|--------------------|----------|
+| TC01         | View account balance                 | Account exists                   | 1. Start app<br>2. Select 'View Balance'                                   | Current balance is displayed                     |               |                    |          |
+| TC02         | Credit account with valid amount     | Account exists                   | 1. Start app<br>2. Select 'Credit Account'<br>3. Enter valid amount        | Balance increases by entered amount              |               |                    |          |
+| TC03         | Debit account with valid amount      | Account exists, sufficient funds | 1. Start app<br>2. Select 'Debit Account'<br>3. Enter valid amount         | Balance decreases by entered amount              |               |                    |          |
+| TC04         | Debit account with insufficient funds| Account exists, insufficient funds| 1. Start app<br>2. Select 'Debit Account'<br>3. Enter amount > balance     | Error message; balance unchanged                 |               |                    |          |
+| TC05         | Credit account with invalid amount   | Account exists                   | 1. Start app<br>2. Select 'Credit Account'<br>3. Enter negative/invalid amount| Error message; balance unchanged                 |               |                    |          |
+| TC06         | Debit account with invalid amount    | Account exists                   | 1. Start app<br>2. Select 'Debit Account'<br>3. Enter negative/invalid amount| Error message; balance unchanged                 |               |                    |          |
+| TC07         | Exit application                     | None                             | 1. Start app<br>2. Select 'Exit'                                            | Application exits gracefully                     |               |                    |          |
+| TC08         | Data integrity after operations      | Account exists                   | 1. Perform credit/debit<br>2. View balance<br>3. Restart app<br>4. View balance| Balance reflects previous operations            |               |                    |          |
+| TC09         | Unique account ID enforcement        | Add new account                  | 1. Attempt to add account with existing ID                                   | Error message; account not added                 |               |                    |          |
+| TC10         | Account creation with valid data     | None                             | 1. Add new account with valid data                                         | Account is created and visible in records        |               |                    |          |
+| TC11         | Account creation with invalid data   | None                             | 1. Add new account with invalid/missing data                               | Error message; account not created               |               |                    |          |
+| TC12         | Generate account summary/report      | Accounts exist                   | 1. Select report/summary option                                            | Summary/report is generated and displayed        |               |                    |          |
+
+> Fill in Actual Result, Status, and Comments after executing each test case.
